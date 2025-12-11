@@ -35,7 +35,7 @@ int main(int argc, char *argv[]) {
 void exeCommand(char *buffer, ssize_t command_size) {
 
     // Shell exit
-    if (strcmp("exit", buffer) == 0) {
+    if (strcmp("exit", buffer) == 0 || command_size == 0) {
         write(STDOUT_FILENO, "Exit shell...\n", strlen("Exit shell...\n"));
         exit(EXIT_FAILURE);
     }
