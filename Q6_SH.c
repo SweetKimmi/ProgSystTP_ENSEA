@@ -21,7 +21,6 @@ int main(int argc, char *argv[]) {
 
    // Prompt
     const char* prompt = "\nenseash % ";
-    write(STDOUT_FILENO, prompt, strlen(prompt)); 
 
     char buffer[BUFFER_SIZE];
     ssize_t command_size;
@@ -29,7 +28,7 @@ int main(int argc, char *argv[]) {
 
     while (1){
         // Prompt
-        //write(STDOUT_FILENO, prompt, strlen(prompt)); 
+        write(STDOUT_FILENO, prompt, strlen(prompt)); 
 
         memset(buffer, 0, BUFFER_SIZE); //clear buffer
 
