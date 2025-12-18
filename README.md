@@ -61,7 +61,7 @@ On commence par faire afficher dans le terminal le pid du process grâce à `get
 
 _Note :_ Il est conseillé de ne pas utiliser `printf` car il peut mal fonctionner avec `read` et `write`, mais par facilité pour les tests, on fait afficher le pid avec cette fonction. 
 
-** Q6 -**
+**Q6 -**
 
 On souhaite à présent traiter des commandes complexes. L'idée est de séparer chacune des commandes pour les rendre indépendantes afin de les éxecuter séparemment. Pour cela, nous utilisons un tableau de caractères  `char**` 
 
@@ -77,7 +77,7 @@ Il est important de clear le buffer avant chaque éxecution.
 
 Finalement on test le signal avec la commande `ls -l` car nous n'avions pas osfortune. On obtient bien le résultat attendu.
 
-** Q7 -**
+**Q7 -**
 
 Notre objectif est d'envoyer la sortie d'une commande vers un fichier texte, qui pourra ensuite être utilisé comme entrée pour une autre commande. Pour cela, on utilise les opérateurs de direction `<`  et `>` .
 
