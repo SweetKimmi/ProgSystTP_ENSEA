@@ -9,6 +9,8 @@
 #define MSG_SIZE 50
 #define CODE_SIZE 10
 
+void exeCommand(char **buffer, ssize_t command_size);
+void writeReturn(char *msg, int code);
 char **splitcommand(char *cmd);
 
 int main(int argc, char *argv[]) {
