@@ -60,3 +60,19 @@ On peut également tester pour un signal. Pour cela, on modifie le code dans le 
 On commence par faire afficher dans le terminal le pid du process grâce à `getpid()`. On ajoute un temps d'attente afin de pouvoir arrêter le processus avant la fin. Depuis un autre terminal, on utilise `kill -SIGKILL xxx` pour arrêter le processus fils. Dand le shell `enseash`, on observe l'affichage du code `sign:9` correspondant bien à SIGKILL. 
 
 _Note :_ Il est conseillé de ne pas utiliser `printf` car il peut mal fonctionner avec `read` et `write`, mais par facilité pour les tests, on fait afficher le pid avec cette fonction. 
+
+** Q6 -**
+
+On souhaite à présent traiter des commandes complexes. L'idée est de séparer chacune des commandes pour les rendre indépendantes afin de les éxecuter séparemment. Pour cela, nous utilisons un tableau de caractères  `char**` 
+
+On commence par écrire une première fonction qui va séparer chacune des commandes dans le shell.
+
+La séparation est faite grâce à  `strtok`. Puis on déplace notre char dans un tableau. On oublie pas d'allouer de la mémoire à notre tableau à chaque ajout.
+
+Ensuite, on modifie la fonction `exeCommande` pour qu'elle soit adaptée à un tableau de caractères.
+
+On change également exclp en excvp pour pouvoir manipuler plusieurs commandes.
+
+Il est important de clear le buffer avant chaque éxecution.
+
+Finalement on test le signal avec la commande `ls -l` car nous n'avions pas osfortune. On obtient bien le résultat attendu.
