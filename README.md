@@ -76,3 +76,17 @@ On change également exclp en excvp pour pouvoir manipuler plusieurs commandes.
 Il est important de clear le buffer avant chaque éxecution.
 
 Finalement on test le signal avec la commande `ls -l` car nous n'avions pas osfortune. On obtient bien le résultat attendu.
+
+** Q7 -**
+
+Notre objectif est d'envoyer la sortie d'une commande vers un fichier texte, qui pourra ensuite être utilisé comme entrée pour une autre commande. Pour cela, on utilise les opérateurs de direction `<`  et `>` .
+
+D'abord, on parcout notre tableau de commande pour réperer la présence de ces symboles. 
+
+Lorsque le symbole `>` est détecté, on ouvre le fichier (créé s’il n’existe pas et écrasé s’il existe déjà).
+
+Puis, la fonction `dup2(file, STDOUT_FILENO)` permet de remplacer la sortie standard par ce fichier. Tout ce qui devait être affiché par le terminal est écrit dedans.
+
+De la même manière, lorsque le symbole `<` est détecté, `dup2(file, STDIN_FILENO)` permet de remplacer l'entrée standard par le même fichier.
+
+Finalement, une fois les redirections prises en compte, on voit que le programme s'éxecute normalement, mais avec une sortie et une entrée différentes.
