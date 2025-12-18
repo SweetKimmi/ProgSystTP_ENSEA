@@ -8,6 +8,7 @@
 #define BUFFER_SIZE 128
 #define MSG_SIZE 50
 #define CODE_SIZE 10
+#define ARG_SIZE 20
 
 void exeCommand(char **buffer, ssize_t command_size);
 void writeReturn(char *msg, int code);
@@ -48,7 +49,7 @@ int main(int argc, char *argv[]) {
 void exeCommand(char **buffer, ssize_t command_size) { //modified to take an array of strings
 
     // Shell exit
-    if (strcmp("exit", buffer) == 0 || command_size == 0) { // exit on "exit" command or ctrl+D
+    if (buffer[0] != NULL && strcmp("exit", buffer[0]) == 0) {
         write(STDOUT_FILENO, "Exit shell...\n", strlen("Exit shell...\n"));
         exit(EXIT_FAILURE);
     }
@@ -77,13 +78,13 @@ void writeReturn(char *msg, int code) {
 char** splitcommand(char *cmd) {
     // Function to split command string into array of strings
     char **argv ;
-    argv = malloc(20*sizeof(char*));
+    argv = malloc(ARG_SIZE*sizeof(char*)); 
     int i = 0;
 
     char *tmp = strtok(cmd, " "); // split command into tokens based on space delimiter
 
     while (tmp != NULL) {
-        argv[i] = malloc(20*sizeof(char*));
+        argv[i] = malloc(ARG_SIZE*sizeof(char*));
         strcpy(argv[i], tmp);
         tmp = strtok(NULL, " "); // get next token
         i++;
